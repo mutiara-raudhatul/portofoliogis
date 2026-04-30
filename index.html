@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mutiara Raudhatul Jannah | GIS & WebGIS Portfolio</title>
+  <meta name="description" content="Portofolio profesional GIS dan WebGIS Mutiara Raudhatul Jannah" />
+  <meta name="theme-color" content="#0f3d2e" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #f4f7f3;
+      --surface: #ffffff;
+      --surface-soft: #eef5ef;
+      --primary: #0f3d2e;
+      --primary-2: #176b4a;
+      --accent: #9ccf52;
+      --accent-2: #e0b84b;
+      --text: #1c2a24;
+      --muted: #64736c;
+      --line: #dbe7dd;
+      --shadow: 0 18px 45px rgba(15, 61, 46, 0.12);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(156, 207, 82, 0.22), transparent 32rem),
+        radial-gradient(circle at top right, rgba(23, 107, 74, 0.16), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244, 247, 243, 0.86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(219, 231, 221, 0.9);
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--primary-2));
+      box-shadow: 0 0 0 7px rgba(156, 207, 82, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-2);
+    }
+
+    .hero {
+      padding: 50px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) 380px;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: 42px;
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(15, 61, 46, 0.96), rgba(23, 107, 74, 0.94)),
+        url("asset/map-pattern.png");
+      color: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -120px -160px auto;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      border: 55px solid rgba(156, 207, 82, 0.18);
+    }
+
+    .eyebrow {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.13);
+      color: #e7f6df;
+      font-weight: 700;
+      font-size: 0.86rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      font-family: Poppins, Inter, sans-serif;
+      font-size: clamp(2.4rem, 3.5vw, 4.9rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 22px;
+      max-width: 900px;
+    }
+
+    .lead {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 1.04rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions,
+    .project-links {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: var(--radius-sm);
+      font-weight: 800;
+      font-size: 0.92rem;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #173120;
+      box-shadow: 0 12px 24px rgba(156, 207, 82, 0.24);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .hero-meta {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .meta-box {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .meta-box strong {
+      display: block;
+      font-size: 1.5rem;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+
+    .meta-box span {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.88rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(219, 231, 221, 0.92);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .profile {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .avatar {
+      width: 152px;
+      height: 152px;
+      border-radius: 38px;
+      overflow: hidden;
+      border: 8px solid var(--surface-soft);
+      background: var(--surface-soft);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-info .role,
+    .role {
+      color: var(--primary-2);
+      font-weight: 800;
+      font-size: 0.94rem;
+    }
+
+    .avatar-info small {
+      display: block;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .profile-card {
+      padding: 20px;
+      border-radius: 22px;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+    }
+
+    .profile-card h3,
+    .card h3,
+    .item h3 {
+      font-family: Poppins, Inter, sans-serif;
+      color: var(--primary);
+      line-height: 1.25;
+    }
+
+    .profile-list {
+      margin-top: 12px;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .contact-item,
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-item i {
+      color: var(--primary-2);
+      width: 18px;
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      background: #f2f8ef;
+      color: #214336;
+      border: 1px solid #dcebd8;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      font-family: Poppins, Inter, sans-serif;
+      color: var(--primary);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+    }
+
+    .section-kicker {
+      color: var(--primary-2);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      margin-bottom: 6px;
+    }
+
+    .about-text {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .content-card {
+      padding: 28px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card {
+      padding: 24px;
+    }
+
+    .skill-card p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .highlight {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 32px rgba(15, 61, 46, 0.08);
+    }
+
+    .highlight strong {
+      display: block;
+      color: var(--primary-2);
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-bottom: 10px;
+      font-family: Poppins, Inter, sans-serif;
+    }
+
+    .highlight span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .item {
+      position: relative;
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 32px rgba(15, 61, 46, 0.08);
+    }
+
+    .item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 28px;
+      bottom: 28px;
+      width: 5px;
+      border-radius: 0 99px 99px 0;
+      background: linear-gradient(var(--accent), var(--primary-2));
+    }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      padding: 7px 11px;
+      border-radius: var(--radius-sm);
+      background: rgba(23, 107, 74, 0.1);
+      color: var(--primary-2);
+      font-weight: 800;
+      font-size: 0.78rem;
+      border: 1px solid rgba(23, 107, 74, 0.16);
+    }
+
+    .badge.alt {
+      background: rgba(156, 207, 82, 0.16);
+      color: #395718;
+    }
+
+    .item ul {
+      display: grid;
+      gap: 9px;
+      margin-left: 18px;
+      color: var(--muted);
+    }
+
+    .projects {
+      display: grid;
+      gap: 22px;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      overflow: hidden;
+    }
+
+    .project-thumb {
+      position: relative;
+      min-height: 310px;
+      background: linear-gradient(135deg, #dfeee0, #bdd8bf);
+      overflow: hidden;
+    }
+
+    .project-carousel {
+      height: 100%;
+      display: flex;
+      animation: slideShow 18s infinite;
+    }
+
+    .project-slide {
+      min-width: 100%;
+      height: 100%;
+    }
+
+    .project-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 61, 46, 0.32), transparent 58%);
+    }
+
+    .carousel-dots {
+      position: absolute;
+      left: 22px;
+      bottom: 20px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .carousel-dots span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .carousel-dots .active {
+      width: 28px;
+      border-radius: 99px;
+      background: #ffffff;
+    }
+
+    @keyframes slideShow {
+      0%, 18% { transform: translateX(0); }
+      24%, 42% { transform: translateX(-100%); }
+      48%, 66% { transform: translateX(-200%); }
+      72%, 90% { transform: translateX(-300%); }
+      100% { transform: translateX(0); }
+    }
+
+    .project-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .project-body p {
+      color: var(--muted);
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .project-links .btn-primary {
+      background: var(--primary-2);
+      color: #ffffff;
+      box-shadow: 0 10px 20px rgba(23, 107, 74, 0.18);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .contact-row {
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: flex-start;
+    }
+
+    .contact-row span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .contact-row strong {
+      color: var(--primary);
+      text-align: right;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    .footer {
+      padding: 34px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .project-card,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-meta,
+      .highlights,
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1160px);
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-card,
+      .content-card,
+      .item,
+      .project-body,
+      .profile {
+        padding: 22px;
+      }
+
+      .hero-meta,
+      .highlights,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .item-top,
+      .project-top,
+      .section-head,
+      .contact-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-row strong {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Kembali ke awal">
+        <span class="brand-dot"></span>
+        <span>GIS Portfolio</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigasi utama">
+        <a href="#tentang">Tentang</a>
+        <a href="#keahlian">Keahlian</a>
+        <a href="#pengalaman">Pengalaman</a>
+        <a href="#proyek">Proyek</a>
+        <a href="#sertifikasi">Pendidikan</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <article class="hero-card">
+          <span class="eyebrow"><i class="fa-solid fa-map-location-dot"></i> GIS Developer • WebGIS Engineer • Spatial Data Integration</span>
+          <h1>MUTIARA RAUDHATUL JANNAH</h1>
+          <p class="lead">
+            GIS dan WebGIS Developer dengan pengalaman membangun sistem informasi geospasial untuk instansi pemerintah, mulai dari pengelolaan data spasial, integrasi peta interaktif, REST API, database spasial, hingga deployment sistem produksi. Terbiasa mengembangkan solusi berbasis Django, CodeIgniter 4, Laravel, GeoServer, GeoNode, PostgreSQL, MySQL, QGIS, ArcGIS, dan Google Maps API untuk mendukung analisis, pelaporan, serta pengambilan keputusan berbasis lokasi.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#proyek"><i class="fa-solid fa-layer-group"></i> Lihat Proyek WebGIS</a>
+            <a class="btn btn-secondary" href="#kontak"><i class="fa-solid fa-paper-plane"></i> Hubungi Saya</a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-box">
+              <strong>2+ Tahun</strong>
+              <span>pengalaman WebGIS dan backend sistem produksi</span>
+            </div>
+            <div class="meta-box">
+              <strong>82K+</strong>
+              <span>data spasial dan non-spasial dikelola</span>
+            </div>
+            <div class="meta-box">
+              <strong>&gt;99%</strong>
+              <span>uptime sistem web yang dikelola</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="profile card">
+          <div class="avatar" style="overflow: center;">
+            <img src="asset/profil.png" alt="Foto profil Mutiara Raudhatul Jannah">
+          </div>
+
+          <div class="avatar-info">
+            <span class="role">GIS & WebGIS Developer</span>
+            <small>Padang, Sumatera Barat • Bersedia bekerja on-site</small>
+          </div>
+
+          <div class="profile-card">
+            <h3>Spesialisasi</h3>
+            <div class="chip-group">
+              <span class="chip"><i class="fa-solid fa-map"></i> WebGIS</span>
+              <span class="chip"><i class="fa-solid fa-database"></i> Spatial Database</span>
+              <span class="chip"><i class="fa-solid fa-server"></i> GeoServer</span>
+              <span class="chip"><i class="fa-solid fa-code"></i> REST API</span>
+              <span class="chip"><i class="fa-solid fa-shield-halved"></i> RBAC</span>
+            </div>
+          </div>
+
+          <div class="profile-card">
+            <h3>Kontak Profesional</h3>
+            <div class="profile-list">
+              <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:mutiarajannah02@gmail.com">mutiarajannah02@gmail.com</a>
+              </div>
+              <div class="contact-item">
+                <i class="fa-brands fa-linkedin"></i>
+                <a href="https://linkedin.com/in/mutiararaudhatuljannah" target="_blank" rel="noreferrer">linkedin.com/in/mutiararaudhatuljannah</a>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container" id="tentang">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Professional Summary</p>
+          <h2>Profil</h2>
+        </div>
+      </div>
+      <div class="card content-card">
+        <p class="about-text">
+          Saya berfokus pada pengembangan sistem GIS berbasis web yang menghubungkan data spasial, data atribut, dan kebutuhan operasional instansi. Pengalaman saya mencakup pembangunan WebGIS, desain dan migrasi database, pengelolaan layer spasial, integrasi peta interaktif, pengembangan REST API, serta deployment dan maintenance pada Linux server. Dengan latar belakang Sistem Informasi, saya terbiasa menerjemahkan kebutuhan pengguna menjadi sistem geospasial yang mudah digunakan, terstruktur, aman, dan siap dipakai untuk pelaporan maupun pengambilan keputusan.
+        </p>
+      </div>
+    </section>
+
+    <section class="section container" id="keahlian">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Core Competencies</p>
+          <h2>Keahlian & Teknologi Pendukung</h2>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card skill-card">
+          <h3>GIS & Spatial Platform</h3>
+          <p>Pengelolaan data spasial, publikasi layer, visualisasi peta, dan integrasi platform GIS.</p>
+          <div class="chip-group">
+            <span class="chip">QGIS</span>
+            <span class="chip">ArcGIS</span>
+            <span class="chip">GeoServer</span>
+            <span class="chip">GeoNode</span>
+            <span class="chip">Google Maps API</span>
+            <span class="chip">Web Mapping</span>
+          </div>
+        </div>
+
+        <div class="card skill-card">
+          <h3>Spatial Web Development</h3>
+          <p>Pengembangan aplikasi WebGIS, dashboard, API, autentikasi, dan integrasi sistem.</p>
+          <div class="chip-group">
+            <span class="chip">Django</span>
+            <span class="chip">Laravel</span>
+            <span class="chip">CodeIgniter 4</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">PHP</span>
+            <span class="chip">Python</span>
+          </div>
+        </div>
+
+        <div class="card skill-card">
+          <h3>Database & Data Engineering</h3>
+          <p>Desain skema, validasi, migrasi, optimasi query, integrasi data spasial dan non-spasial.</p>
+          <div class="chip-group">
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">Data Migration</span>
+            <span class="chip">Data Validation</span>
+            <span class="chip">Query Optimization</span>
+            <span class="chip">Data Pipeline</span>
+          </div>
+        </div>
+
+        <div class="card skill-card">
+          <h3>Deployment & Production Support</h3>
+          <p>Deployment, monitoring, backup, troubleshooting, dokumentasi, dan pengamanan akses sistem.</p>
+          <div class="chip-group">
+            <span class="chip">Ubuntu Server</span>
+            <span class="chip">SSH</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Git</span>
+            <span class="chip">Postman</span>
+            <span class="chip">RBAC</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Impact Metrics</p>
+          <h2>Dampak Proyek</h2>
+        </div>
+      </div>
+
+      <div class="highlights">
+        <div class="highlight"><strong>32.000+</strong><span>data spasial dan non-spasial dikelola pada sistem WebGIS.</span></div>
+        <div class="highlight"><strong>50.000+</strong><span>data unit rumah divalidasi, diperbarui, dan dimigrasi.</span></div>
+        <div class="highlight"><strong>Juara 3</strong><span>Kompetisi Inovasi Daerah Kota Padang Tahun 2024.</span></div>
+        <div class="highlight"><strong>&gt;99%</strong><span>uptime dua sistem web yang digunakan pada lingkungan instansi.</span></div>
+      </div>
+    </section>
+
+    <section class="section container" id="pengalaman">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Work Experience</p>
+          <h2>Pengalaman Kerja Relevan</h2>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article class="item">
+          <div class="item-top">
+            <div>
+              <h3>Staf IT | Tim EQUITY, Direktorat Kerja Sama dan Hilirisasi Riset Universitas Andalas</h3>
+              <div class="role">Kontrak • Mar 2026 - Sekarang</div>
+            </div>
+            <div class="badge alt">IT & Data Support</div>
+          </div>
+          <ul>
+            <li>Mengelola dan memastikan ketersediaan dua sistem berbasis web dengan uptime lebih dari 99% untuk mendukung aktivitas pengguna aktif.</li>
+            <li>Melakukan monitoring performa, troubleshooting, dan pemeliharaan sistem agar layanan tetap stabil.</li>
+            <li>Mendukung integrasi dan pengolahan data untuk kebutuhan pelaporan, pemeringkatan internasional, dan kolaborasi riset.</li>
+            <li>Berkolaborasi lintas tim untuk memastikan data terstruktur, konsisten, dan siap digunakan untuk analitik maupun pelaporan.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item-top">
+            <div>
+              <h3>Tenaga Ahli / Fasilitator Update Sistem Aplikasi Informasi Perumahan | DPRKP Kota Padang</h3>
+              <div class="role">Kontrak • Jun 2025 - Des 2025</div>
+            </div>
+            <div class="badge alt">WebGIS & Fullstack Developer</div>
+          </div>
+          <ul>
+            <li>Mengembangkan dan memelihara sistem informasi perumahan berbasis web menggunakan CodeIgniter 4, JavaScript, dan MySQL.</li>
+            <li>Mendesain, memvalidasi, dan mengoptimalkan database untuk meningkatkan konsistensi data serta kesiapan produksi.</li>
+            <li>Memvalidasi, memperbarui, dan memigrasikan lebih dari 50.000 data unit rumah.</li>
+            <li>Mengimplementasikan REST API dan integrasi sistem untuk sinkronisasi data antarplatform berbasis GIS.</li>
+            <li>Menerapkan role-based access control untuk meningkatkan keamanan dan tata kelola akses pengguna.</li>
+            <li>Melakukan deployment dan maintenance pada server Ubuntu melalui SSH, termasuk monitoring, backup, dan troubleshooting.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item-top">
+            <div>
+              <h3>Tenaga Ahli / Fasilitator Update Data Spasial | DPRKP Kota Padang</h3>
+              <div class="role">Kontrak • Feb 2024 - Des 2024</div>
+            </div>
+            <div class="badge alt">GIS Developer</div>
+          </div>
+          <ul>
+            <li>Mengembangkan WebGIS menggunakan Django, PostgreSQL, GeoNode, dan GeoServer.</li>
+            <li>Mengelola lebih dari 32.000 data spasial dan non-spasial, termasuk validasi, pembaruan, dan pemeriksaan konsistensi data.</li>
+            <li>Membangun pipeline dan integrasi sistem untuk mendukung pengelolaan data perumahan dan permukiman berbasis lokasi.</li>
+            <li>Mengimplementasikan Docker untuk menjaga konsistensi environment deployment.</li>
+            <li>Menghasilkan aplikasi WebGIS yang meraih Juara 3 Kompetisi Inovasi Daerah Kota Padang Tahun 2024.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <div class="item-top">
+            <div>
+              <h3>IT Project Lead | Komunitas BEENANTI</h3>
+              <div class="role">Jan 2023 - Des 2023</div>
+            </div>
+            <div class="badge alt">Project Leadership</div>
+          </div>
+          <ul>
+            <li>Memimpin pengembangan aplikasi berbasis web dari analisis kebutuhan hingga implementasi.</li>
+            <li>Menerjemahkan kebutuhan pengguna menjadi spesifikasi sistem, alur aplikasi, dan fitur prioritas.</li>
+            <li>Berkontribusi pada pengembangan backend, database, REST API, pengujian, dan dokumentasi.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="proyek">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Selected GIS Projects</p>
+          <h2>Studi Kasus Proyek</h2>
+        </div>
+      </div>
+
+      <div class="projects">
+        <article class="card project-card">
+          <div class="project-thumb">
+            <div class="project-carousel">
+              <div class="project-slide"><img src="asset/sirumahkita-1.png" alt="Tampilan WebGIS SIRUMAHKITA"></div>
+              <div class="project-slide"><img src="asset/sirumahkita-2.png" alt="Layer peta SIRUMAHKITA"></div>
+              <div class="project-slide"><img src="asset/sirumahkita-3.png" alt="Dashboard data spasial SIRUMAHKITA"></div>
+              <div class="project-slide"><img src="asset/sirumahkita-4.png" alt="Fitur peta SIRUMAHKITA"></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="carousel-dots"><span class="active"></span><span></span><span></span></div>
+          </div>
+
+          <div class="project-body">
+            <div class="project-top">
+              <h3>SIRUMAHKITA</h3>
+              <span class="badge">WebGIS Platform</span>
+            </div>
+            <p>
+              WebGIS terintegrasi untuk pengelolaan data spasial perumahan dan permukiman Kota Padang. Sistem ini membantu visualisasi peta, pengelolaan layer, pelaporan masyarakat, dan analisis data berbasis lokasi secara lebih cepat dan akurat.
+            </p>
+            <div class="project-meta">
+              <span class="chip">Django</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">GeoServer</span>
+              <span class="chip">GeoNode</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Spatial Data</span>
+            </div>
+            <div class="project-links">
+              <a class="btn btn-primary" href="https://sirumahkita.padang.go.id" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Situs</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-thumb">
+            <div class="project-carousel">
+              <div class="project-slide"><img src="asset/sikasper-1.png" alt="Tampilan aplikasi SIKASPER"></div>
+              <div class="project-slide"><img src="asset/sikasper-2.png" alt="Dashboard SIKASPER"></div>
+              <div class="project-slide"><img src="asset/sikasper-3.png" alt="Fitur peta SIKASPER"></div>
+              <div class="project-slide"><img src="asset/sikasper-4.png" alt="Data perumahan SIKASPER"></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="carousel-dots"><span class="active"></span><span></span><span></span></div>
+          </div>
+
+          <div class="project-body">
+            <div class="project-top">
+              <h3>SIKASPER</h3>
+              <span class="badge">Web App & PWA GIS</span>
+            </div>
+            <p>
+              Sistem informasi perumahan berbasis web untuk pendataan, pengelolaan, publikasi data, dan visualisasi peta interaktif. Sistem ini membantu digitalisasi proses manual, mengurangi duplikasi data, dan mempercepat akses informasi bagi instansi maupun masyarakat.
+            </p>
+            <div class="project-meta">
+              <span class="chip">CodeIgniter 4</span>
+              <span class="chip">MySQL</span>
+              <span class="chip">REST API</span>
+              <span class="chip">PWA</span>
+              <span class="chip">Web Mapping</span>
+              <span class="chip">RBAC</span>
+            </div>
+            <div class="project-links">
+              <a class="btn btn-primary" href="https://sikasper.padang.go.id" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Situs</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-thumb">
+            <div class="project-carousel">
+              <div class="project-slide"><img src="asset/gtp-1.png" alt="Aplikasi Desa Wisata"></div>
+              <div class="project-slide"><img src="asset/gtp-2.png" alt="Fitur rute wisata"></div>
+              <div class="project-slide"><img src="asset/gtp-5.png" alt="Reservasi wisata"></div>
+              <div class="project-slide"><img src="asset/gtp-4.png" alt="Peta destinasi wisata"></div>
+            </div>
+            <div class="project-overlay"></div>
+            <div class="carousel-dots"><span class="active"></span><span></span><span></span></div>
+          </div>
+
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Aplikasi Desa Wisata</h3>
+              <span class="badge">Web & Mobile GIS</span>
+            </div>
+            <p>
+              Sistem reservasi paket wisata dan homestay berbasis web dan mobile dengan fitur booking, payment, route, review, dan informasi lokasi. Sistem ini mendukung digitalisasi pengelolaan wisata serta mempermudah pengguna menemukan rute dan informasi destinasi secara real-time.
+            </p>
+            <div class="project-meta">
+              <span class="chip">CodeIgniter 4</span>
+              <span class="chip">MySQL</span>
+              <span class="chip">Route Mapping</span>
+              <span class="chip">Mobile App</span>
+              <span class="chip">Booking System</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="sertifikasi">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Education & Certification</p>
+          <h2>Pendidikan dan Sertifikasi</h2>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card skill-card">
+          <h3>Pendidikan</h3>
+          <p class="about-text">Universitas Andalas — S1 Sistem Informasi</p>
+          <p class="small">2019 - 2024 • IPK: 3.83 / 4.00</p>
+        </div>
+
+        <div class="card skill-card">
+          <h3>Sertifikasi</h3>
+          <div class="chip-group">
+            <span class="chip">Junior Web Programmer BNSP • 2025-2028</span>
+            <span class="chip">Database Design and Programming with SQL • 2023</span>
+            <span class="chip">Basic Web Programming • 2026-2029</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="kontak">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h2>Terbuka untuk Kolaborasi GIS</h2>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card content-card">
+          <h3>Siap mendukung proyek GIS, WebGIS, dan integrasi data spasial</h3>
+          <p class="about-text">
+            Terbuka untuk posisi GIS Developer, WebGIS Developer, Backend Developer, Web Developer, atau peran yang membutuhkan penguatan pada spatial database, Web Mapping, API, integrasi sistem, dan production support.
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-row">
+              <span>Email</span>
+              <strong><a href="mailto:mutiarajannah02@gmail.com">mutiarajannah02@gmail.com</a></strong>
+            </div>
+            <div class="contact-row">
+              <span>LinkedIn</span>
+              <strong><a href="https://linkedin.com/in/mutiararaudhatuljannah" target="_blank" rel="noreferrer">linkedin.com/in/mutiararaudhatuljannah</a></strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="card content-card">
+          <h3>Nilai yang Ditawarkan</h3>
+          <div class="chip-group">
+            <span class="chip">Membangun WebGIS dari kebutuhan pengguna</span>
+            <span class="chip">Membersihkan dan memigrasikan data besar</span>
+            <span class="chip">Menghubungkan data dengan peta interaktif</span>
+            <span class="chip">Menjaga sistem tetap stabil di produksi</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 Mutiara Raudhatul Jannah • Professional GIS & WebGIS Portfolio
+    </div>
+  </footer>
+</body>
+</html>
